@@ -10,33 +10,53 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiPublicEra5DailyRouteImport } from './routes/api/public/era5/daily'
+import { Route as ApiPublicEra5SummaryRouteImport } from './routes/api/public/era5/summary'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicEra5DailyRoute = ApiPublicEra5DailyRouteImport.update({
+  id: '/api/public/era5/daily',
+  path: '/api/public/era5/daily',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicEra5SummaryRoute = ApiPublicEra5SummaryRouteImport.update({
+  id: '/api/public/era5/summary',
+  path: '/api/public/era5/summary',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/api/public/era5/daily': typeof ApiPublicEra5DailyRoute
+  '/api/public/era5/summary': typeof ApiPublicEra5SummaryRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/api/public/era5/daily': typeof ApiPublicEra5DailyRoute
+  '/api/public/era5/summary': typeof ApiPublicEra5SummaryRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/api/public/era5/daily': typeof ApiPublicEra5DailyRoute
+  '/api/public/era5/summary': typeof ApiPublicEra5SummaryRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/api/public/era5/daily' | '/api/public/era5/summary'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/api/public/era5/daily' | '/api/public/era5/summary'
+  id: '__root__' | '/' | '/api/public/era5/daily' | '/api/public/era5/summary'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ApiPublicEra5DailyRoute: typeof ApiPublicEra5DailyRoute
+  ApiPublicEra5SummaryRoute: typeof ApiPublicEra5SummaryRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +68,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/era5/daily': {
+      id: '/api/public/era5/daily'
+      path: '/api/public/era5/daily'
+      fullPath: '/api/public/era5/daily'
+      preLoaderRoute: typeof ApiPublicEra5DailyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/era5/summary': {
+      id: '/api/public/era5/summary'
+      path: '/api/public/era5/summary'
+      fullPath: '/api/public/era5/summary'
+      preLoaderRoute: typeof ApiPublicEra5SummaryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ApiPublicEra5DailyRoute: ApiPublicEra5DailyRoute,
+  ApiPublicEra5SummaryRoute: ApiPublicEra5SummaryRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
