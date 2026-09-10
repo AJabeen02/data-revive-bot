@@ -119,13 +119,52 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+const NAV = [
+  { to: "/", label: "Overview" },
+  { to: "/map", label: "Gridded maps" },
+  { to: "/data", label: "Data provenance" },
+] as const;
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <div className="min-h-screen">
+        <header className="sticky top-0 z-20 border-b border-border bg-background/80 backdrop-blur">
+          <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6">
+            <Link to="/" className="flex items-center gap-3">
+              <span className="grid size-9 place-items-center rounded-md border border-primary/40 bg-primary/15 text-primary">
+                ◈
+              </span>
+              <span>
+                <span className="block text-sm font-semibold tracking-tight">SIH GEO-CLIMATE INTELLIGENCE</span>
+                <span className="block text-[11px] text-muted-foreground">
+                  ERA5 reanalysis · January 2025 · South India
+                </span>
+              </span>
+            </Link>
+            <nav className="flex gap-1">
+              {NAV.map((n) => (
+                <Link
+                  key={n.to}
+                  to={n.to}
+                  activeOptions={{ exact: n.to === "/" }}
+                  className="rounded-md px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-secondary"
+                  activeProps={{ className: "bg-secondary text-foreground" }}
+                >
+                  {n.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+        </header>
+        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+        <Outlet />
+        <footer className="border-t border-border py-6 text-center text-xs text-muted-foreground">
+          Source: ECMWF ERA5 hourly reanalysis on single levels, 1–31 January 2025. Measured values only.
+        </footer>
+      </div>
     </QueryClientProvider>
   );
 }
