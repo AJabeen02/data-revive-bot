@@ -27,7 +27,7 @@ export function GridMap({
   return (
     <div>
       <div
-        className="grid gap-px rounded-md border border-border bg-grid-line p-px"
+        className="mx-auto grid max-w-[460px] gap-px rounded-md border border-border bg-grid-line p-px"
         style={{ gridTemplateColumns: `repeat(${lons.length}, minmax(0, 1fr))` }}
         onMouseLeave={() => setHover(null)}
       >
