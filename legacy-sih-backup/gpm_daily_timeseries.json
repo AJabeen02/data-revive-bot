@@ -1,0 +1,713 @@
+{
+  "dataset": "NASA GPM IMERG Final Precipitation L3 1-day 0.1 degree (GPM_3IMERGDF)",
+  "period": "January 1 - January 30, 2024",
+  "bounds": {
+    "leaflet_bounds": [
+      [
+        5.9289,
+        67.9126
+      ],
+      [
+        38.9869,
+        98.0062
+      ]
+    ],
+    "north": 38.9869,
+    "south": 5.9289,
+    "west": 67.9126,
+    "east": 98.0062
+  },
+  "total_days": 30,
+  "overall_max_mm": 358.14,
+  "overall_mean_mm": 0.75,
+  "daily_records": [
+    {
+      "day": 1,
+      "date": "2024-01-01",
+      "max_rain_mm": 254.02,
+      "mean_rain_mm": 1.92,
+      "p95_rain_mm": 6.24,
+      "regional": {
+        "north": 0.05,
+        "south": 5.47,
+        "east": 0.05,
+        "west": 0.02,
+        "central": 0.0
+      },
+      "has_extreme_event": true,
+      "extreme_hotspots": [
+        {
+          "lat": 6.2882,
+          "lon": 77.6144,
+          "rain_mm": 254.0
+        },
+        {
+          "lat": 6.2882,
+          "lon": 77.4348,
+          "rain_mm": 239.2
+        },
+        {
+          "lat": 6.2882,
+          "lon": 77.3449,
+          "rain_mm": 235.7
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "date": "2024-01-02",
+      "max_rain_mm": 229.2,
+      "mean_rain_mm": 1.37,
+      "p95_rain_mm": 4.56,
+      "regional": {
+        "north": 0.05,
+        "south": 3.84,
+        "east": 0.06,
+        "west": 0.07,
+        "central": 0.09
+      },
+      "has_extreme_event": true,
+      "extreme_hotspots": [
+        {
+          "lat": 6.378,
+          "lon": 85.6993,
+          "rain_mm": 229.2
+        },
+        {
+          "lat": 6.2882,
+          "lon": 85.6094,
+          "rain_mm": 213.9
+        },
+        {
+          "lat": 6.2882,
+          "lon": 85.6993,
+          "rain_mm": 197.6
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "date": "2024-01-03",
+      "max_rain_mm": 258.76,
+      "mean_rain_mm": 1.32,
+      "p95_rain_mm": 4.12,
+      "regional": {
+        "north": 0.03,
+        "south": 3.68,
+        "east": 0.05,
+        "west": 0.11,
+        "central": 0.16
+      },
+      "has_extreme_event": true,
+      "extreme_hotspots": [
+        {
+          "lat": 8.7137,
+          "lon": 71.8652,
+          "rain_mm": 258.8
+        },
+        {
+          "lat": 8.7137,
+          "lon": 71.9551,
+          "rain_mm": 258.8
+        },
+        {
+          "lat": 8.6238,
+          "lon": 71.9551,
+          "rain_mm": 255.6
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "date": "2024-01-04",
+      "max_rain_mm": 277.8,
+      "mean_rain_mm": 2.36,
+      "p95_rain_mm": 7.08,
+      "regional": {
+        "north": 0.05,
+        "south": 6.69,
+        "east": 0.03,
+        "west": 0.09,
+        "central": 0.12
+      },
+      "has_extreme_event": true,
+      "extreme_hotspots": [
+        {
+          "lat": 8.534,
+          "lon": 73.3924,
+          "rain_mm": 277.8
+        },
+        {
+          "lat": 8.7137,
+          "lon": 73.3924,
+          "rain_mm": 273.7
+        },
+        {
+          "lat": 8.7137,
+          "lon": 72.9432,
+          "rain_mm": 265.0
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "date": "2024-01-05",
+      "max_rain_mm": 184.11,
+      "mean_rain_mm": 1.26,
+      "p95_rain_mm": 5.46,
+      "regional": {
+        "north": 0.09,
+        "south": 3.09,
+        "east": 0.22,
+        "west": 0.57,
+        "central": 1.04
+      },
+      "has_extreme_event": true,
+      "extreme_hotspots": [
+        {
+          "lat": 11.8578,
+          "lon": 86.2383,
+          "rain_mm": 184.1
+        },
+        {
+          "lat": 11.6781,
+          "lon": 86.3281,
+          "rain_mm": 173.0
+        },
+        {
+          "lat": 11.7679,
+          "lon": 86.0586,
+          "rain_mm": 170.0
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "date": "2024-01-06",
+      "max_rain_mm": 149.0,
+      "mean_rain_mm": 1.1,
+      "p95_rain_mm": 4.31,
+      "regional": {
+        "north": 0.03,
+        "south": 3.0,
+        "east": 0.47,
+        "west": 0.14,
+        "central": 0.32
+      },
+      "has_extreme_event": true,
+      "extreme_hotspots": [
+        {
+          "lat": 7.0069,
+          "lon": 78.8721,
+          "rain_mm": 149.0
+        },
+        {
+          "lat": 7.0069,
+          "lon": 79.0517,
+          "rain_mm": 142.7
+        },
+        {
+          "lat": 7.0069,
+          "lon": 78.9619,
+          "rain_mm": 142.7
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "date": "2024-01-07",
+      "max_rain_mm": 74.89,
+      "mean_rain_mm": 0.88,
+      "p95_rain_mm": 4.11,
+      "regional": {
+        "north": 0.04,
+        "south": 2.44,
+        "east": 0.09,
+        "west": 0.12,
+        "central": 0.05
+      },
+      "has_extreme_event": false,
+      "extreme_hotspots": []
+    },
+    {
+      "day": 8,
+      "date": "2024-01-08",
+      "max_rain_mm": 183.51,
+      "mean_rain_mm": 1.79,
+      "p95_rain_mm": 10.46,
+      "regional": {
+        "north": 0.07,
+        "south": 4.98,
+        "east": 0.04,
+        "west": 0.41,
+        "central": 0.06
+      },
+      "has_extreme_event": true,
+      "extreme_hotspots": [
+        {
+          "lat": 6.2882,
+          "lon": 81.8365,
+          "rain_mm": 183.5
+        },
+        {
+          "lat": 6.2882,
+          "lon": 81.6569,
+          "rain_mm": 180.8
+        },
+        {
+          "lat": 6.2882,
+          "lon": 81.7467,
+          "rain_mm": 180.8
+        }
+      ]
+    },
+    {
+      "day": 9,
+      "date": "2024-01-09",
+      "max_rain_mm": 140.4,
+      "mean_rain_mm": 1.78,
+      "p95_rain_mm": 9.52,
+      "regional": {
+        "north": 0.03,
+        "south": 4.85,
+        "east": 0.06,
+        "west": 0.82,
+        "central": 0.35
+      },
+      "has_extreme_event": true,
+      "extreme_hotspots": [
+        {
+          "lat": 7.9052,
+          "lon": 81.3874,
+          "rain_mm": 140.4
+        },
+        {
+          "lat": 7.8154,
+          "lon": 81.4772,
+          "rain_mm": 139.9
+        },
+        {
+          "lat": 7.9052,
+          "lon": 81.4772,
+          "rain_mm": 139.4
+        }
+      ]
+    },
+    {
+      "day": 10,
+      "date": "2024-01-10",
+      "max_rain_mm": 358.14,
+      "mean_rain_mm": 1.21,
+      "p95_rain_mm": 2.81,
+      "regional": {
+        "north": 0.03,
+        "south": 3.31,
+        "east": 0.11,
+        "west": 0.26,
+        "central": 0.26
+      },
+      "has_extreme_event": true,
+      "extreme_hotspots": [
+        {
+          "lat": 6.7374,
+          "lon": 82.106,
+          "rain_mm": 358.1
+        },
+        {
+          "lat": 6.6475,
+          "lon": 82.106,
+          "rain_mm": 358.1
+        },
+        {
+          "lat": 6.7374,
+          "lon": 82.0162,
+          "rain_mm": 345.0
+        }
+      ]
+    },
+    {
+      "day": 11,
+      "date": "2024-01-11",
+      "max_rain_mm": 43.67,
+      "mean_rain_mm": 0.15,
+      "p95_rain_mm": 0.36,
+      "regional": {
+        "north": 0.02,
+        "south": 0.39,
+        "east": 0.05,
+        "west": 0.02,
+        "central": 0.03
+      },
+      "has_extreme_event": false,
+      "extreme_hotspots": []
+    },
+    {
+      "day": 12,
+      "date": "2024-01-12",
+      "max_rain_mm": 69.05,
+      "mean_rain_mm": 0.11,
+      "p95_rain_mm": 0.28,
+      "regional": {
+        "north": 0.06,
+        "south": 0.23,
+        "east": 0.04,
+        "west": 0.02,
+        "central": 0.01
+      },
+      "has_extreme_event": false,
+      "extreme_hotspots": []
+    },
+    {
+      "day": 13,
+      "date": "2024-01-13",
+      "max_rain_mm": 47.75,
+      "mean_rain_mm": 0.13,
+      "p95_rain_mm": 0.27,
+      "regional": {
+        "north": 0.1,
+        "south": 0.27,
+        "east": 0.04,
+        "west": 0.08,
+        "central": 0.02
+      },
+      "has_extreme_event": false,
+      "extreme_hotspots": []
+    },
+    {
+      "day": 14,
+      "date": "2024-01-14",
+      "max_rain_mm": 7.66,
+      "mean_rain_mm": 0.03,
+      "p95_rain_mm": 0.04,
+      "regional": {
+        "north": 0.03,
+        "south": 0.05,
+        "east": 0.03,
+        "west": 0.01,
+        "central": 0.0
+      },
+      "has_extreme_event": false,
+      "extreme_hotspots": []
+    },
+    {
+      "day": 15,
+      "date": "2024-01-15",
+      "max_rain_mm": 22.99,
+      "mean_rain_mm": 0.09,
+      "p95_rain_mm": 0.31,
+      "regional": {
+        "north": 0.05,
+        "south": 0.19,
+        "east": 0.06,
+        "west": 0.02,
+        "central": 0.04
+      },
+      "has_extreme_event": false,
+      "extreme_hotspots": []
+    },
+    {
+      "day": 16,
+      "date": "2024-01-16",
+      "max_rain_mm": 48.32,
+      "mean_rain_mm": 0.19,
+      "p95_rain_mm": 0.52,
+      "regional": {
+        "north": 0.06,
+        "south": 0.4,
+        "east": 0.14,
+        "west": 0.01,
+        "central": 0.11
+      },
+      "has_extreme_event": false,
+      "extreme_hotspots": []
+    },
+    {
+      "day": 17,
+      "date": "2024-01-17",
+      "max_rain_mm": 55.29,
+      "mean_rain_mm": 0.26,
+      "p95_rain_mm": 0.93,
+      "regional": {
+        "north": 0.06,
+        "south": 0.59,
+        "east": 0.15,
+        "west": 0.02,
+        "central": 0.18
+      },
+      "has_extreme_event": false,
+      "extreme_hotspots": []
+    },
+    {
+      "day": 18,
+      "date": "2024-01-18",
+      "max_rain_mm": 66.87,
+      "mean_rain_mm": 0.45,
+      "p95_rain_mm": 1.89,
+      "regional": {
+        "north": 0.05,
+        "south": 1.02,
+        "east": 0.32,
+        "west": 0.01,
+        "central": 0.45
+      },
+      "has_extreme_event": false,
+      "extreme_hotspots": []
+    },
+    {
+      "day": 19,
+      "date": "2024-01-19",
+      "max_rain_mm": 50.81,
+      "mean_rain_mm": 0.22,
+      "p95_rain_mm": 0.65,
+      "regional": {
+        "north": 0.03,
+        "south": 0.58,
+        "east": 0.06,
+        "west": 0.01,
+        "central": 0.04
+      },
+      "has_extreme_event": false,
+      "extreme_hotspots": []
+    },
+    {
+      "day": 20,
+      "date": "2024-01-20",
+      "max_rain_mm": 71.64,
+      "mean_rain_mm": 0.1,
+      "p95_rain_mm": 0.39,
+      "regional": {
+        "north": 0.04,
+        "south": 0.19,
+        "east": 0.09,
+        "west": 0.02,
+        "central": 0.14
+      },
+      "has_extreme_event": false,
+      "extreme_hotspots": []
+    },
+    {
+      "day": 21,
+      "date": "2024-01-21",
+      "max_rain_mm": 33.08,
+      "mean_rain_mm": 0.1,
+      "p95_rain_mm": 0.21,
+      "regional": {
+        "north": 0.04,
+        "south": 0.11,
+        "east": 0.22,
+        "west": 0.01,
+        "central": 0.34
+      },
+      "has_extreme_event": false,
+      "extreme_hotspots": []
+    },
+    {
+      "day": 22,
+      "date": "2024-01-22",
+      "max_rain_mm": 51.29,
+      "mean_rain_mm": 0.09,
+      "p95_rain_mm": 0.07,
+      "regional": {
+        "north": 0.04,
+        "south": 0.15,
+        "east": 0.12,
+        "west": 0.01,
+        "central": 0.15
+      },
+      "has_extreme_event": false,
+      "extreme_hotspots": []
+    },
+    {
+      "day": 23,
+      "date": "2024-01-23",
+      "max_rain_mm": 65.5,
+      "mean_rain_mm": 0.13,
+      "p95_rain_mm": 0.25,
+      "regional": {
+        "north": 0.04,
+        "south": 0.22,
+        "east": 0.15,
+        "west": 0.03,
+        "central": 0.25
+      },
+      "has_extreme_event": false,
+      "extreme_hotspots": []
+    },
+    {
+      "day": 24,
+      "date": "2024-01-24",
+      "max_rain_mm": 74.85,
+      "mean_rain_mm": 0.53,
+      "p95_rain_mm": 2.92,
+      "regional": {
+        "north": 0.07,
+        "south": 0.51,
+        "east": 1.33,
+        "west": 0.02,
+        "central": 1.81
+      },
+      "has_extreme_event": false,
+      "extreme_hotspots": []
+    },
+    {
+      "day": 25,
+      "date": "2024-01-25",
+      "max_rain_mm": 79.61,
+      "mean_rain_mm": 0.74,
+      "p95_rain_mm": 3.24,
+      "regional": {
+        "north": 0.22,
+        "south": 1.49,
+        "east": 0.77,
+        "west": 0.05,
+        "central": 0.66
+      },
+      "has_extreme_event": false,
+      "extreme_hotspots": []
+    },
+    {
+      "day": 26,
+      "date": "2024-01-26",
+      "max_rain_mm": 205.14,
+      "mean_rain_mm": 0.88,
+      "p95_rain_mm": 2.96,
+      "regional": {
+        "north": 0.12,
+        "south": 2.29,
+        "east": 0.32,
+        "west": 0.07,
+        "central": 0.13
+      },
+      "has_extreme_event": true,
+      "extreme_hotspots": [
+        {
+          "lat": 6.378,
+          "lon": 95.3112,
+          "rain_mm": 205.1
+        },
+        {
+          "lat": 6.4679,
+          "lon": 95.3112,
+          "rain_mm": 197.0
+        },
+        {
+          "lat": 6.4679,
+          "lon": 95.2214,
+          "rain_mm": 181.5
+        }
+      ]
+    },
+    {
+      "day": 27,
+      "date": "2024-01-27",
+      "max_rain_mm": 159.86,
+      "mean_rain_mm": 0.98,
+      "p95_rain_mm": 4.09,
+      "regional": {
+        "north": 0.21,
+        "south": 2.37,
+        "east": 0.32,
+        "west": 0.22,
+        "central": 0.39
+      },
+      "has_extreme_event": true,
+      "extreme_hotspots": [
+        {
+          "lat": 10.4205,
+          "lon": 89.7417,
+          "rain_mm": 159.9
+        },
+        {
+          "lat": 7.6357,
+          "lon": 92.0773,
+          "rain_mm": 158.6
+        },
+        {
+          "lat": 7.5459,
+          "lon": 92.0773,
+          "rain_mm": 158.6
+        }
+      ]
+    },
+    {
+      "day": 28,
+      "date": "2024-01-28",
+      "max_rain_mm": 141.3,
+      "mean_rain_mm": 1.23,
+      "p95_rain_mm": 6.05,
+      "regional": {
+        "north": 0.87,
+        "south": 2.46,
+        "east": 0.33,
+        "west": 0.29,
+        "central": 0.28
+      },
+      "has_extreme_event": true,
+      "extreme_hotspots": [
+        {
+          "lat": 8.3543,
+          "lon": 90.1908,
+          "rain_mm": 141.3
+        },
+        {
+          "lat": 8.4442,
+          "lon": 90.1908,
+          "rain_mm": 141.3
+        },
+        {
+          "lat": 8.534,
+          "lon": 90.1908,
+          "rain_mm": 128.0
+        }
+      ]
+    },
+    {
+      "day": 29,
+      "date": "2024-01-29",
+      "max_rain_mm": 139.42,
+      "mean_rain_mm": 0.7,
+      "p95_rain_mm": 3.14,
+      "regional": {
+        "north": 0.2,
+        "south": 1.79,
+        "east": 0.23,
+        "west": 0.02,
+        "central": 0.07
+      },
+      "has_extreme_event": true,
+      "extreme_hotspots": [
+        {
+          "lat": 7.456,
+          "lon": 89.9214,
+          "rain_mm": 139.4
+        },
+        {
+          "lat": 7.3662,
+          "lon": 89.9214,
+          "rain_mm": 132.4
+        },
+        {
+          "lat": 7.6357,
+          "lon": 89.9214,
+          "rain_mm": 131.9
+        }
+      ]
+    },
+    {
+      "day": 30,
+      "date": "2024-01-30",
+      "max_rain_mm": 49.5,
+      "mean_rain_mm": 0.47,
+      "p95_rain_mm": 2.12,
+      "regional": {
+        "north": 0.33,
+        "south": 0.88,
+        "east": 0.24,
+        "west": 0.09,
+        "central": 0.23
+      },
+      "has_extreme_event": false,
+      "extreme_hotspots": []
+    }
+  ]
+}

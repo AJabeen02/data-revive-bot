@@ -1,0 +1,78 @@
+{
+  "dataset": "BharathBench Deep Learning Weather Prediction Models (IMDAA Benchmark)",
+  "total_models": 30,
+  "best_models": [
+    {
+      "filename": "IMDAA_CNN_T2m_3days_val_loss_0.0266.hdf5",
+      "architecture": "CNN",
+      "target_variable": "2m Temperature (T2m)",
+      "forecast_horizon": "3 Days (72h)",
+      "validation_loss": 0.0266,
+      "model_size_mb": 2.16,
+      "path": "Data\\BharathBench\\Table4Models\\IMDAA_CNN_T2m_3days_val_loss_0.0266.hdf5"
+    },
+    {
+      "filename": "IMDAA_convlstm_T2m _3days_val_loss_0.0298.hdf5",
+      "architecture": "ConvLSTM",
+      "target_variable": "2m Temperature (T2m)",
+      "forecast_horizon": "3 Days (72h)",
+      "validation_loss": 0.0298,
+      "model_size_mb": 8.36,
+      "path": "Data\\BharathBench\\Table4Models\\IMDAA_convlstm_T2m _3days_val_loss_0.0298.hdf5"
+    },
+    {
+      "filename": "IMDAA_CNN_T2m_5days_val_loss_0.0311.hdf5",
+      "architecture": "CNN",
+      "target_variable": "2m Temperature (T2m)",
+      "forecast_horizon": "5 Days (120h)",
+      "validation_loss": 0.0311,
+      "model_size_mb": 2.16,
+      "path": "Data\\BharathBench\\Table4Models\\IMDAA_CNN_T2m_5days_val_loss_0.0311.hdf5"
+    },
+    {
+      "filename": "IMDAA_convlstm_T2m _5days_val_loss_0.0341.hdf5",
+      "architecture": "ConvLSTM",
+      "target_variable": "2m Temperature (T2m)",
+      "forecast_horizon": "5 Days (120h)",
+      "validation_loss": 0.0341,
+      "model_size_mb": 8.35,
+      "path": "Data\\BharathBench\\Table4Models\\IMDAA_convlstm_T2m _5days_val_loss_0.0341.hdf5"
+    },
+    {
+      "filename": "IMDAA_CNN_T850_3days_val_loss_0.1202.hdf5",
+      "architecture": "CNN",
+      "target_variable": "850hPa Temp (T850)",
+      "forecast_horizon": "3 Days (72h)",
+      "validation_loss": 0.1202,
+      "model_size_mb": 2.16,
+      "path": "Data\\BharathBench\\Table4Models\\IMDAA_CNN_T850_3days_val_loss_0.1202.hdf5"
+    },
+    {
+      "filename": "IMDAA_convlstm_T850_3days_val_loss_0.1256.hdf5",
+      "architecture": "ConvLSTM",
+      "target_variable": "850hPa Temp (T850)",
+      "forecast_horizon": "3 Days (72h)",
+      "validation_loss": 0.1256,
+      "model_size_mb": 6.47,
+      "path": "Data\\BharathBench\\Table4Models\\IMDAA_convlstm_T850_3days_val_loss_0.1256.hdf5"
+    },
+    {
+      "filename": "IMDAA_CNN_H500_3days_val_loss_0.1473.hdf5",
+      "architecture": "CNN",
+      "target_variable": "Geopotential 500hPa (H500)",
+      "forecast_horizon": "3 Days (72h)",
+      "validation_loss": 0.1473,
+      "model_size_mb": 2.16,
+      "path": "Data\\BharathBench\\Table4Models\\IMDAA_CNN_H500_3days_val_loss_0.1473.hdf5"
+    },
+    {
+      "filename": "IMDAA_CNN_T850_5days_val_loss_0.1473.hdf5",
+      "architecture": "CNN",
+      "target_variable": "850hPa Temp (T850)",
+      "forecast_horizon": "5 Days (120h)",
+      "validation_loss": 0.1473,
+      "model_size_mb": 2.16,
+      "path": "Data\\BharathBench\\Table4Models\\IMDAA_CNN_T850_5days_val_loss_0.1473.hdf5"
+    }
+  ]
+}
