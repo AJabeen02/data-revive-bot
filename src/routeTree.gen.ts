@@ -10,12 +10,24 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DataRouteImport } from './routes/data'
+import { Route as MapRouteImport } from './routes/map'
 import { Route as ApiPublicEra5DailyRouteImport } from './routes/api/public/era5/daily'
 import { Route as ApiPublicEra5SummaryRouteImport } from './routes/api/public/era5/summary'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DataRoute = DataRouteImport.update({
+  id: '/data',
+  path: '/data',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MapRoute = MapRouteImport.update({
+  id: '/map',
+  path: '/map',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiPublicEra5DailyRoute = ApiPublicEra5DailyRouteImport.update({
@@ -31,30 +43,54 @@ const ApiPublicEra5SummaryRoute = ApiPublicEra5SummaryRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/data': typeof DataRoute
+  '/map': typeof MapRoute
   '/api/public/era5/daily': typeof ApiPublicEra5DailyRoute
   '/api/public/era5/summary': typeof ApiPublicEra5SummaryRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/data': typeof DataRoute
+  '/map': typeof MapRoute
   '/api/public/era5/daily': typeof ApiPublicEra5DailyRoute
   '/api/public/era5/summary': typeof ApiPublicEra5SummaryRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/data': typeof DataRoute
+  '/map': typeof MapRoute
   '/api/public/era5/daily': typeof ApiPublicEra5DailyRoute
   '/api/public/era5/summary': typeof ApiPublicEra5SummaryRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/api/public/era5/daily' | '/api/public/era5/summary'
+  fullPaths:
+    | '/'
+    | '/data'
+    | '/map'
+    | '/api/public/era5/daily'
+    | '/api/public/era5/summary'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api/public/era5/daily' | '/api/public/era5/summary'
-  id: '__root__' | '/' | '/api/public/era5/daily' | '/api/public/era5/summary'
+  to:
+    | '/'
+    | '/data'
+    | '/map'
+    | '/api/public/era5/daily'
+    | '/api/public/era5/summary'
+  id:
+    | '__root__'
+    | '/'
+    | '/data'
+    | '/map'
+    | '/api/public/era5/daily'
+    | '/api/public/era5/summary'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DataRoute: typeof DataRoute
+  MapRoute: typeof MapRoute
   ApiPublicEra5DailyRoute: typeof ApiPublicEra5DailyRoute
   ApiPublicEra5SummaryRoute: typeof ApiPublicEra5SummaryRoute
 }
@@ -66,6 +102,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/data': {
+      id: '/data'
+      path: '/data'
+      fullPath: '/data'
+      preLoaderRoute: typeof DataRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/map': {
+      id: '/map'
+      path: '/map'
+      fullPath: '/map'
+      preLoaderRoute: typeof MapRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/public/era5/daily': {
@@ -87,6 +137,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DataRoute: DataRoute,
+  MapRoute: MapRoute,
   ApiPublicEra5DailyRoute: ApiPublicEra5DailyRoute,
   ApiPublicEra5SummaryRoute: ApiPublicEra5SummaryRoute,
 }
