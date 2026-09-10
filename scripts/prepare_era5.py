@@ -27,7 +27,7 @@ import xarray as xr
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(BASE, "data", "new")
-OUT = os.path.join(BASE, "public", "data", "era5")
+OUT = os.path.join(BASE, "src", "data", "era5")
 os.makedirs(OUT, exist_ok=True)
 
 acc = xr.open_dataset(os.path.join(SRC, "data_stream-oper_stepType-accum.nc"))
@@ -225,7 +225,7 @@ for name, payload in [
     ("hourly.json", hourly),
     ("daily.json", {"days": daily}),
     ("grids.json", grids),
-    ("hourly_rain_grid.json", hourly_rain),
+    ("hourly_rain_grid.json", hourly_rain),  # large: served as a static asset
     ("derived_exposure.json", derived),
 ]:
     p = os.path.join(OUT, name)
