@@ -1,0 +1,728 @@
+{
+  "dataset": "SRTM 30m Digital Elevation Model (South India)",
+  "bounds": {
+    "north": 18.0412,
+    "south": 7.9998,
+    "west": 73.9999,
+    "east": 82.0001,
+    "leaflet_bounds": [
+      [
+        7.9998,
+        73.9999
+      ],
+      [
+        18.0412,
+        82.0001
+      ]
+    ]
+  },
+  "resolution": "~30 meters original, web-rendered at ~900m",
+  "stats": {
+    "min_m": -70.0,
+    "max_m": 2601.0,
+    "mean_m": 257.83837890625,
+    "highest_peak": "Anamudi / Western Ghats Crest (2,665m)"
+  },
+  "transect": [
+    {
+      "distance_km": 0.0,
+      "elevation_m": 17.0,
+      "lat": 11.25,
+      "lon": 75.78,
+      "landmark": "Coast (Kozhikode)"
+    },
+    {
+      "distance_km": 1.4,
+      "elevation_m": 12.0,
+      "lat": 11.2476,
+      "lon": 75.7918,
+      "landmark": ""
+    },
+    {
+      "distance_km": 2.7,
+      "elevation_m": 19.0,
+      "lat": 11.2452,
+      "lon": 75.8036,
+      "landmark": ""
+    },
+    {
+      "distance_km": 4.1,
+      "elevation_m": 61.0,
+      "lat": 11.2427,
+      "lon": 75.8155,
+      "landmark": ""
+    },
+    {
+      "distance_km": 5.5,
+      "elevation_m": 44.0,
+      "lat": 11.2403,
+      "lon": 75.8273,
+      "landmark": ""
+    },
+    {
+      "distance_km": 6.8,
+      "elevation_m": 13.0,
+      "lat": 11.2379,
+      "lon": 75.8391,
+      "landmark": ""
+    },
+    {
+      "distance_km": 8.2,
+      "elevation_m": 39.0,
+      "lat": 11.2355,
+      "lon": 75.8509,
+      "landmark": ""
+    },
+    {
+      "distance_km": 9.5,
+      "elevation_m": 23.0,
+      "lat": 11.233,
+      "lon": 75.8627,
+      "landmark": ""
+    },
+    {
+      "distance_km": 10.9,
+      "elevation_m": 32.0,
+      "lat": 11.2306,
+      "lon": 75.8745,
+      "landmark": ""
+    },
+    {
+      "distance_km": 12.3,
+      "elevation_m": 42.0,
+      "lat": 11.2282,
+      "lon": 75.8864,
+      "landmark": ""
+    },
+    {
+      "distance_km": 13.6,
+      "elevation_m": 58.0,
+      "lat": 11.2258,
+      "lon": 75.8982,
+      "landmark": ""
+    },
+    {
+      "distance_km": 15.0,
+      "elevation_m": 75.0,
+      "lat": 11.2233,
+      "lon": 75.91,
+      "landmark": ""
+    },
+    {
+      "distance_km": 16.4,
+      "elevation_m": 9.0,
+      "lat": 11.2209,
+      "lon": 75.9218,
+      "landmark": ""
+    },
+    {
+      "distance_km": 17.7,
+      "elevation_m": 49.0,
+      "lat": 11.2185,
+      "lon": 75.9336,
+      "landmark": ""
+    },
+    {
+      "distance_km": 19.1,
+      "elevation_m": 62.0,
+      "lat": 11.2161,
+      "lon": 75.9455,
+      "landmark": ""
+    },
+    {
+      "distance_km": 20.5,
+      "elevation_m": 53.0,
+      "lat": 11.2136,
+      "lon": 75.9573,
+      "landmark": ""
+    },
+    {
+      "distance_km": 21.8,
+      "elevation_m": 88.0,
+      "lat": 11.2112,
+      "lon": 75.9691,
+      "landmark": ""
+    },
+    {
+      "distance_km": 23.2,
+      "elevation_m": 73.0,
+      "lat": 11.2088,
+      "lon": 75.9809,
+      "landmark": ""
+    },
+    {
+      "distance_km": 24.5,
+      "elevation_m": 42.0,
+      "lat": 11.2064,
+      "lon": 75.9927,
+      "landmark": ""
+    },
+    {
+      "distance_km": 25.9,
+      "elevation_m": 35.0,
+      "lat": 11.2039,
+      "lon": 76.0045,
+      "landmark": ""
+    },
+    {
+      "distance_km": 27.3,
+      "elevation_m": 37.0,
+      "lat": 11.2015,
+      "lon": 76.0164,
+      "landmark": ""
+    },
+    {
+      "distance_km": 28.6,
+      "elevation_m": 60.0,
+      "lat": 11.1991,
+      "lon": 76.0282,
+      "landmark": ""
+    },
+    {
+      "distance_km": 30.0,
+      "elevation_m": 26.0,
+      "lat": 11.1967,
+      "lon": 76.04,
+      "landmark": ""
+    },
+    {
+      "distance_km": 31.4,
+      "elevation_m": 26.0,
+      "lat": 11.1942,
+      "lon": 76.0518,
+      "landmark": ""
+    },
+    {
+      "distance_km": 32.7,
+      "elevation_m": 33.0,
+      "lat": 11.1918,
+      "lon": 76.0636,
+      "landmark": ""
+    },
+    {
+      "distance_km": 34.1,
+      "elevation_m": 43.0,
+      "lat": 11.1894,
+      "lon": 76.0755,
+      "landmark": ""
+    },
+    {
+      "distance_km": 35.5,
+      "elevation_m": 92.0,
+      "lat": 11.187,
+      "lon": 76.0873,
+      "landmark": ""
+    },
+    {
+      "distance_km": 36.8,
+      "elevation_m": 72.0,
+      "lat": 11.1845,
+      "lon": 76.0991,
+      "landmark": ""
+    },
+    {
+      "distance_km": 38.2,
+      "elevation_m": 69.0,
+      "lat": 11.1821,
+      "lon": 76.1109,
+      "landmark": ""
+    },
+    {
+      "distance_km": 39.5,
+      "elevation_m": 42.0,
+      "lat": 11.1797,
+      "lon": 76.1227,
+      "landmark": ""
+    },
+    {
+      "distance_km": 40.9,
+      "elevation_m": 26.0,
+      "lat": 11.1773,
+      "lon": 76.1345,
+      "landmark": ""
+    },
+    {
+      "distance_km": 42.3,
+      "elevation_m": 40.0,
+      "lat": 11.1748,
+      "lon": 76.1464,
+      "landmark": ""
+    },
+    {
+      "distance_km": 43.6,
+      "elevation_m": 35.0,
+      "lat": 11.1724,
+      "lon": 76.1582,
+      "landmark": ""
+    },
+    {
+      "distance_km": 45.0,
+      "elevation_m": 42.0,
+      "lat": 11.17,
+      "lon": 76.17,
+      "landmark": ""
+    },
+    {
+      "distance_km": 46.4,
+      "elevation_m": 47.0,
+      "lat": 11.1676,
+      "lon": 76.1818,
+      "landmark": ""
+    },
+    {
+      "distance_km": 47.7,
+      "elevation_m": 58.0,
+      "lat": 11.1652,
+      "lon": 76.1936,
+      "landmark": ""
+    },
+    {
+      "distance_km": 49.1,
+      "elevation_m": 52.0,
+      "lat": 11.1627,
+      "lon": 76.2055,
+      "landmark": ""
+    },
+    {
+      "distance_km": 50.5,
+      "elevation_m": 63.0,
+      "lat": 11.1603,
+      "lon": 76.2173,
+      "landmark": ""
+    },
+    {
+      "distance_km": 51.8,
+      "elevation_m": 55.0,
+      "lat": 11.1579,
+      "lon": 76.2291,
+      "landmark": ""
+    },
+    {
+      "distance_km": 53.2,
+      "elevation_m": 55.0,
+      "lat": 11.1555,
+      "lon": 76.2409,
+      "landmark": ""
+    },
+    {
+      "distance_km": 54.5,
+      "elevation_m": 49.0,
+      "lat": 11.153,
+      "lon": 76.2527,
+      "landmark": ""
+    },
+    {
+      "distance_km": 55.9,
+      "elevation_m": 40.0,
+      "lat": 11.1506,
+      "lon": 76.2645,
+      "landmark": ""
+    },
+    {
+      "distance_km": 57.3,
+      "elevation_m": 71.0,
+      "lat": 11.1482,
+      "lon": 76.2764,
+      "landmark": ""
+    },
+    {
+      "distance_km": 58.6,
+      "elevation_m": 66.0,
+      "lat": 11.1458,
+      "lon": 76.2882,
+      "landmark": ""
+    },
+    {
+      "distance_km": 60.0,
+      "elevation_m": 82.0,
+      "lat": 11.1433,
+      "lon": 76.3,
+      "landmark": ""
+    },
+    {
+      "distance_km": 61.4,
+      "elevation_m": 51.0,
+      "lat": 11.1409,
+      "lon": 76.3118,
+      "landmark": ""
+    },
+    {
+      "distance_km": 62.7,
+      "elevation_m": 78.0,
+      "lat": 11.1385,
+      "lon": 76.3236,
+      "landmark": ""
+    },
+    {
+      "distance_km": 64.1,
+      "elevation_m": 70.0,
+      "lat": 11.1361,
+      "lon": 76.3355,
+      "landmark": ""
+    },
+    {
+      "distance_km": 65.5,
+      "elevation_m": 75.0,
+      "lat": 11.1336,
+      "lon": 76.3473,
+      "landmark": ""
+    },
+    {
+      "distance_km": 66.8,
+      "elevation_m": 186.0,
+      "lat": 11.1312,
+      "lon": 76.3591,
+      "landmark": ""
+    },
+    {
+      "distance_km": 68.2,
+      "elevation_m": 203.0,
+      "lat": 11.1288,
+      "lon": 76.3709,
+      "landmark": ""
+    },
+    {
+      "distance_km": 69.5,
+      "elevation_m": 192.0,
+      "lat": 11.1264,
+      "lon": 76.3827,
+      "landmark": ""
+    },
+    {
+      "distance_km": 70.9,
+      "elevation_m": 387.0,
+      "lat": 11.1239,
+      "lon": 76.3945,
+      "landmark": ""
+    },
+    {
+      "distance_km": 72.3,
+      "elevation_m": 772.0,
+      "lat": 11.1215,
+      "lon": 76.4064,
+      "landmark": ""
+    },
+    {
+      "distance_km": 73.6,
+      "elevation_m": 1172.0,
+      "lat": 11.1191,
+      "lon": 76.4182,
+      "landmark": ""
+    },
+    {
+      "distance_km": 75.0,
+      "elevation_m": 983.0,
+      "lat": 11.1167,
+      "lon": 76.43,
+      "landmark": ""
+    },
+    {
+      "distance_km": 76.4,
+      "elevation_m": 1019.0,
+      "lat": 11.1142,
+      "lon": 76.4418,
+      "landmark": ""
+    },
+    {
+      "distance_km": 77.7,
+      "elevation_m": 1028.0,
+      "lat": 11.1118,
+      "lon": 76.4536,
+      "landmark": ""
+    },
+    {
+      "distance_km": 79.1,
+      "elevation_m": 1318.0,
+      "lat": 11.1094,
+      "lon": 76.4655,
+      "landmark": ""
+    },
+    {
+      "distance_km": 80.5,
+      "elevation_m": 1373.0,
+      "lat": 11.107,
+      "lon": 76.4773,
+      "landmark": ""
+    },
+    {
+      "distance_km": 81.8,
+      "elevation_m": 1249.0,
+      "lat": 11.1045,
+      "lon": 76.4891,
+      "landmark": ""
+    },
+    {
+      "distance_km": 83.2,
+      "elevation_m": 1334.0,
+      "lat": 11.1021,
+      "lon": 76.5009,
+      "landmark": ""
+    },
+    {
+      "distance_km": 84.5,
+      "elevation_m": 1305.0,
+      "lat": 11.0997,
+      "lon": 76.5127,
+      "landmark": ""
+    },
+    {
+      "distance_km": 85.9,
+      "elevation_m": 768.0,
+      "lat": 11.0973,
+      "lon": 76.5245,
+      "landmark": ""
+    },
+    {
+      "distance_km": 87.3,
+      "elevation_m": 776.0,
+      "lat": 11.0948,
+      "lon": 76.5364,
+      "landmark": ""
+    },
+    {
+      "distance_km": 88.6,
+      "elevation_m": 1019.0,
+      "lat": 11.0924,
+      "lon": 76.5482,
+      "landmark": "Nilgiri Crest (Ooty)"
+    },
+    {
+      "distance_km": 90.0,
+      "elevation_m": 1370.0,
+      "lat": 11.09,
+      "lon": 76.56,
+      "landmark": ""
+    },
+    {
+      "distance_km": 91.4,
+      "elevation_m": 617.0,
+      "lat": 11.0876,
+      "lon": 76.5718,
+      "landmark": ""
+    },
+    {
+      "distance_km": 92.7,
+      "elevation_m": 555.0,
+      "lat": 11.0852,
+      "lon": 76.5836,
+      "landmark": ""
+    },
+    {
+      "distance_km": 94.1,
+      "elevation_m": 577.0,
+      "lat": 11.0827,
+      "lon": 76.5955,
+      "landmark": ""
+    },
+    {
+      "distance_km": 95.5,
+      "elevation_m": 723.0,
+      "lat": 11.0803,
+      "lon": 76.6073,
+      "landmark": ""
+    },
+    {
+      "distance_km": 96.8,
+      "elevation_m": 707.0,
+      "lat": 11.0779,
+      "lon": 76.6191,
+      "landmark": ""
+    },
+    {
+      "distance_km": 98.2,
+      "elevation_m": 675.0,
+      "lat": 11.0755,
+      "lon": 76.6309,
+      "landmark": ""
+    },
+    {
+      "distance_km": 99.5,
+      "elevation_m": 626.0,
+      "lat": 11.073,
+      "lon": 76.6427,
+      "landmark": ""
+    },
+    {
+      "distance_km": 100.9,
+      "elevation_m": 739.0,
+      "lat": 11.0706,
+      "lon": 76.6545,
+      "landmark": ""
+    },
+    {
+      "distance_km": 102.3,
+      "elevation_m": 555.0,
+      "lat": 11.0682,
+      "lon": 76.6664,
+      "landmark": ""
+    },
+    {
+      "distance_km": 103.6,
+      "elevation_m": 923.0,
+      "lat": 11.0658,
+      "lon": 76.6782,
+      "landmark": ""
+    },
+    {
+      "distance_km": 105.0,
+      "elevation_m": 841.0,
+      "lat": 11.0633,
+      "lon": 76.69,
+      "landmark": ""
+    },
+    {
+      "distance_km": 106.4,
+      "elevation_m": 833.0,
+      "lat": 11.0609,
+      "lon": 76.7018,
+      "landmark": ""
+    },
+    {
+      "distance_km": 107.7,
+      "elevation_m": 841.0,
+      "lat": 11.0585,
+      "lon": 76.7136,
+      "landmark": ""
+    },
+    {
+      "distance_km": 109.1,
+      "elevation_m": 875.0,
+      "lat": 11.0561,
+      "lon": 76.7255,
+      "landmark": ""
+    },
+    {
+      "distance_km": 110.5,
+      "elevation_m": 895.0,
+      "lat": 11.0536,
+      "lon": 76.7373,
+      "landmark": ""
+    },
+    {
+      "distance_km": 111.8,
+      "elevation_m": 788.0,
+      "lat": 11.0512,
+      "lon": 76.7491,
+      "landmark": ""
+    },
+    {
+      "distance_km": 113.2,
+      "elevation_m": 864.0,
+      "lat": 11.0488,
+      "lon": 76.7609,
+      "landmark": ""
+    },
+    {
+      "distance_km": 114.5,
+      "elevation_m": 912.0,
+      "lat": 11.0464,
+      "lon": 76.7727,
+      "landmark": ""
+    },
+    {
+      "distance_km": 115.9,
+      "elevation_m": 1005.0,
+      "lat": 11.0439,
+      "lon": 76.7845,
+      "landmark": ""
+    },
+    {
+      "distance_km": 117.3,
+      "elevation_m": 1315.0,
+      "lat": 11.0415,
+      "lon": 76.7964,
+      "landmark": ""
+    },
+    {
+      "distance_km": 118.6,
+      "elevation_m": 867.0,
+      "lat": 11.0391,
+      "lon": 76.8082,
+      "landmark": ""
+    },
+    {
+      "distance_km": 120.0,
+      "elevation_m": 865.0,
+      "lat": 11.0367,
+      "lon": 76.82,
+      "landmark": ""
+    },
+    {
+      "distance_km": 121.4,
+      "elevation_m": 1121.0,
+      "lat": 11.0342,
+      "lon": 76.8318,
+      "landmark": ""
+    },
+    {
+      "distance_km": 122.7,
+      "elevation_m": 1051.0,
+      "lat": 11.0318,
+      "lon": 76.8436,
+      "landmark": ""
+    },
+    {
+      "distance_km": 124.1,
+      "elevation_m": 675.0,
+      "lat": 11.0294,
+      "lon": 76.8555,
+      "landmark": ""
+    },
+    {
+      "distance_km": 125.5,
+      "elevation_m": 536.0,
+      "lat": 11.027,
+      "lon": 76.8673,
+      "landmark": ""
+    },
+    {
+      "distance_km": 126.8,
+      "elevation_m": 484.0,
+      "lat": 11.0245,
+      "lon": 76.8791,
+      "landmark": ""
+    },
+    {
+      "distance_km": 128.2,
+      "elevation_m": 464.0,
+      "lat": 11.0221,
+      "lon": 76.8909,
+      "landmark": ""
+    },
+    {
+      "distance_km": 129.5,
+      "elevation_m": 448.0,
+      "lat": 11.0197,
+      "lon": 76.9027,
+      "landmark": ""
+    },
+    {
+      "distance_km": 130.9,
+      "elevation_m": 444.0,
+      "lat": 11.0173,
+      "lon": 76.9145,
+      "landmark": ""
+    },
+    {
+      "distance_km": 132.3,
+      "elevation_m": 429.0,
+      "lat": 11.0148,
+      "lon": 76.9264,
+      "landmark": ""
+    },
+    {
+      "distance_km": 133.6,
+      "elevation_m": 431.0,
+      "lat": 11.0124,
+      "lon": 76.9382,
+      "landmark": ""
+    },
+    {
+      "distance_km": 135.0,
+      "elevation_m": 436.0,
+      "lat": 11.01,
+      "lon": 76.95,
+      "landmark": "Coimbatore Plain"
+    }
+  ]
+}

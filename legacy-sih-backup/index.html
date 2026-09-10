@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SIH Geo-Climate Multi-Hazard Intelligence System</title>
+  
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  
+  <!-- Dashboard CSS -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-theme="dark">
+
+  <!-- Top Navigation & Status Bar -->
+  <nav class="navbar">
+    <div class="brand">
+      <div class="brand-icon">⚡</div>
+      <div class="brand-text">
+        <h1>SIH GEO-CLIMATE INTELLIGENCE</h1>
+        <p>Multi-Hazard Early Warning &bullet; Terrain &bull; Precipitation &bull; Climate</p>
+      </div>
+    </div>
+
+    <div class="nav-actions">
+      <span class="badge-tag">
+        <span class="live-pulse"></span>
+        <span>LIVE SATELLITE &bull; REANALYSIS</span>
+      </span>
+
+      <button id="provenance-btn" class="btn">
+        <span>📊 Data Provenance</span>
+      </button>
+
+      <button id="theme-toggle-btn" class="btn">
+        <span>🌙 Dark Mode</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Live Advisory Ticker -->
+  <div class="alert-ticker-bar">
+    <span class="alert-badge">EARLY WARNING</span>
+    <span id="ticker-alert-text" class="ticker-text">
+      CRITICAL ALERT: 3 zones under Red Warning due to intense rain and landslide susceptibility (Chooralmala/Meppadi, Idukki, Cherrapunji). Immediate action recommended.
+    </span>
+  </div>
+
+  <!-- Nowcasting Prediction Horizon Control Bar (2–6 Hour Actionable Window) -->
+  <div class="nowcast-bar-container">
+    <div class="nowcast-label-group">
+      <span class="nowcast-title">⏱️ Actionable Nowcasting Horizon:</span>
+      <div class="horizon-tabs">
+        <button class="horizon-tab-btn active" data-horizon="NOW">NOW (0h)</button>
+        <button class="horizon-tab-btn" data-horizon="+2_HOURS">+2 HOURS</button>
+        <button class="horizon-tab-btn" data-horizon="+4_HOURS">+4 HOURS</button>
+        <button class="horizon-tab-btn" data-horizon="+6_HOURS">+6 HOURS</button>
+      </div>
+    </div>
+    <div style="display:flex; align-items:center; gap:8px;">
+      <span class="nowcast-badge-demo">PROTOTYPE NOWCAST / SIMULATED FORECAST</span>
+      <span style="font-size:11px; color:var(--text-dim);">Calibrated with IMDAA Reanalysis &amp; GPM Satellites</span>
+    </div>
+  </div>
+
+  <main class="dashboard-container">
+
+    <!-- KPI Metric Cards Grid -->
+    <section class="kpi-grid">
+      <div class="kpi-card glass srtm">
+        <div class="kpi-header">
+          <span class="kpi-title">Peak Terrain Elevation</span>
+          <span class="kpi-badge">SRTM 30m</span>
+        </div>
+        <div class="kpi-value" id="kpi-max-elevation">2,665 m</div>
+        <div class="kpi-subtitle">Western Ghats Crest (Anamudi / Nilgiris)</div>
+      </div>
+
+      <div class="kpi-card glass gpm">
+        <div class="kpi-header">
+          <span class="kpi-title">Peak 24h Precipitation</span>
+          <span class="kpi-badge">NASA GPM IMERG</span>
+        </div>
+        <div class="kpi-value" id="kpi-max-rain">277.8 mm</div>
+        <div class="kpi-subtitle">Extreme Event Threshold (>100mm Exceeded)</div>
+      </div>
+
+      <div class="kpi-card glass imdaa">
+        <div class="kpi-header">
+          <span class="kpi-title">Mean Ambient Temp</span>
+          <span class="kpi-badge">IMDAA 2m</span>
+        </div>
+        <div class="kpi-value" id="kpi-avg-temp">21.0 °C</div>
+        <div class="kpi-subtitle">Annual Baseline (Range: -49.2°C to +46.4°C)</div>
+      </div>
+
+      <div class="kpi-card glass risk">
+        <div class="kpi-header">
+          <span class="kpi-title">Active Hazard Status</span>
+          <span class="kpi-badge">Composite Risk</span>
+        </div>
+        <div class="kpi-value" id="kpi-alert-count">3 Red / 5 Amber</div>
+        <div class="kpi-subtitle" id="kpi-alert-status">Immediate early warning active</div>
+      </div>
+    </section>
+
+    <!-- Explainable AI (XAI) & Contributing Factors Drawer -->
+    <section class="xai-panel glass" id="xai-container">
+      <div class="xai-header">
+        <div class="xai-title">
+          <span>🧠 Explainable AI (XAI) &bullet; Why This Alert?</span>
+          <span id="xai-selected-station" style="color:var(--accent-cyan); font-size:13px; font-weight:600;">Idukki (Munnar / Rajamala)</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span class="tier-badge tier-CRITICAL" id="xai-selected-badge">RED ALERT</span>
+          <span style="font-size:11px; color:var(--text-dim);" id="xai-selected-score">Composite Risk: 93.3%</span>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div style="font-size:12px; color:var(--text-muted);">
+          Key atmospheric thermodynamic &amp; terrain factors driving this prediction:
+        </div>
+        <div class="xai-factors-list" id="xai-factors-container">
+          <span class="xai-factor-pill moisture">💧 Heavy Precipitation Detected (142 mm/24h)</span>
+          <span class="xai-factor-pill moisture">🌊 High Moisture Fuel (IWV: 64.2 mm)</span>
+          <span class="xai-factor-pill instability">⚡ Extreme Convective Instability (CAPE: 3250 J/kg)</span>
+          <span class="xai-factor-pill satellite">🛰️ Rapid Updraft: CTT Cooling (-19.4 °C/hr)</span>
+          <span class="xai-factor-pill terrain">🏔️ Steep Escarpment Catalyst (SRTM Slope: 41.2°, Elev: 1530m)</span>
+        </div>
+      </div>
+
+      <!-- Multi-Task AI Heads Output Bar -->
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:10px; margin-top:14px; padding-top:12px; border-top:1px solid var(--border-color);">
+        <div style="font-size:11px;">
+          <span style="color:var(--text-dim);">Thunderstorm Head:</span>
+          <strong id="xai-tstorm-prob" style="color:#fbbf24; margin-left:4px; font-family:var(--font-mono);">95.9%</strong>
+        </div>
+        <div style="font-size:11px;">
+          <span style="color:var(--text-dim);">Cloudburst Head:</span>
+          <strong id="xai-cloudburst-prob" style="color:#38bdf8; margin-left:4px; font-family:var(--font-mono);">97.0%</strong>
+        </div>
+        <div style="font-size:11px;">
+          <span style="color:var(--text-dim);">Flash Flood Head:</span>
+          <strong id="xai-flood-prob" style="color:#ef4444; margin-left:4px; font-family:var(--font-mono);">93.3%</strong>
+        </div>
+        <div style="font-size:11px;">
+          <span style="color:var(--text-dim);">Actionable Advisory:</span>
+          <span id="xai-advisory-text" style="color:#e2e8f0; margin-left:4px;">Evacuation preparedness recommended.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Map & Station Telemetry -->
+    <section class="geo-explorer">
+      <div class="map-wrapper glass">
+        
+        <!-- Map Toolbar -->
+        <div class="map-toolbar">
+          <div class="layer-switches">
+            <label class="layer-checkbox-label">
+              <input type="checkbox" id="toggle-srtm" checked />
+              <span>🏔️ SRTM 30m Terrain</span>
+            </label>
+            <label class="layer-checkbox-label">
+              <input type="checkbox" id="toggle-gpm" checked />
+              <span>🌧️ GPM Precipitation</span>
+            </label>
+            <label class="layer-checkbox-label">
+              <input type="checkbox" id="toggle-markers" checked />
+              <span>⚠️ Hazard Hotspots</span>
+            </label>
+          </div>
+
+          <div class="map-quick-views">
+            <select id="region-select" title="Focus Map Region">
+              <option value="south_india">🔍 Focus: South India / Western Ghats (DEM Area)</option>
+              <option value="wayanad_nilgiris">📍 Wayanad & Nilgiris Escarpment</option>
+              <option value="mumbai_konkan">📍 Mumbai & Konkan Coast</option>
+              <option value="himalayas">📍 Higher Himalayas (Joshimath Basin)</option>
+              <option value="all_india">🇮🇳 All-India Continental View</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Leaflet Container -->
+        <div id="leaflet-map"></div>
+
+        <!-- Floating Layer Opacity Controls -->
+        <div class="map-floating-panel glass">
+          <div class="floating-title">Layer Transparency</div>
+          <div class="slider-group">
+            <label>
+              <span>SRTM DEM Opacity:</span>
+              <span id="srtm-opacity-val">82%</span>
+            </label>
+            <input type="range" id="srtm-opacity" min="0" max="1" step="0.05" value="0.82" />
+          </div>
+          <div class="slider-group">
+            <label>
+              <span>GPM Rain Opacity:</span>
+              <span id="gpm-opacity-val">65%</span>
+            </label>
+            <input type="range" id="gpm-opacity" min="0" max="1" step="0.05" value="0.65" />
+          </div>
+        </div>
+
+        <!-- Live Click Elevation Inspector -->
+        <div class="map-inspector-box glass">
+          <div class="floating-title">🎯 Coordinate & DEM Inspector</div>
+          <div class="inspector-grid">
+            <span class="inspector-label">Latitude:</span>
+            <span class="inspector-val" id="insp-lat">11.5300° N</span>
+
+            <span class="inspector-label">Longitude:</span>
+            <span class="inspector-val" id="insp-lon">76.1200° E</span>
+
+            <span class="inspector-label">Elevation (SRTM):</span>
+            <span class="inspector-val" id="insp-elev" style="color:var(--accent-cyan);">890 m</span>
+
+            <span class="inspector-label">Estimated Slope:</span>
+            <span class="inspector-val" id="insp-slope">38.5°</span>
+
+            <span class="inspector-label">Terrain Risk:</span>
+            <span class="inspector-val" id="insp-risk" style="color:var(--accent-rose);">High Hazard</span>
+          </div>
+          <div style="font-size:10px; color:var(--text-dim); margin-top:6px;">
+            Click anywhere on the South India map to query 30m DEM elevation.
+          </div>
+        </div>
+
+        <!-- GPM Timeline Playback Bar -->
+        <div class="map-timeline-bar glass">
+          <button id="timeline-play" class="timeline-play-btn" title="Play/Pause 30-day timeline">▶</button>
+          
+          <div class="timeline-slider-wrap">
+            <div class="timeline-info">
+              <span>Timeline: NASA GPM IMERG Daily Precipitation</span>
+              <strong id="current-timeline-date" style="color:var(--accent-cyan);">2024-01-01</strong>
+              <span id="timeline-day-stat">Day 1 / 30</span>
+            </div>
+            <input type="range" id="timeline-slider" min="1" max="30" value="1" step="1" />
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Station Telemetry Sidebar -->
+      <aside class="station-sidebar glass">
+        <div class="sidebar-header">
+          <h3 class="sidebar-title">Catchment & Risk Stations</h3>
+          <span class="badge-tag" style="font-size:11px;">19 Monitored</span>
+        </div>
+
+        <div class="station-search">
+          <input type="text" id="station-search-input" placeholder="Search station, state, or region..." />
+        </div>
+
+        <div class="station-list" id="station-list-container">
+          <!-- Populated dynamically via app.js -->
+        </div>
+      </aside>
+    </section>
+
+    <!-- Analytics & Charts Grid -->
+    <section class="charts-grid">
+      <!-- Chart 1: GPM Precipitation Trend -->
+      <div class="chart-card glass">
+        <div class="chart-header">
+          <div class="chart-title">
+            <span>🌧️ Daily Precipitation Distribution</span>
+          </div>
+          <span class="kpi-badge">GPM IMERG Jan 2024</span>
+        </div>
+        <div class="chart-subtitle">All-India daily rainfall totals with 100mm severe event threshold</div>
+        <div class="chart-canvas-wrap">
+          <canvas id="chart-precip"></canvas>
+        </div>
+      </div>
+
+      <!-- Chart 2: IMDAA Temperature Profile -->
+      <div class="chart-card glass">
+        <div class="chart-header">
+          <div class="chart-title">
+            <span>🌡️ Temperature Annual Cycle</span>
+          </div>
+          <span class="kpi-badge">IMDAA 2m Reanalysis</span>
+        </div>
+        <div class="chart-subtitle">Monthly Minimum, Mean, and Maximum ambient temperatures (°C)</div>
+        <div class="chart-canvas-wrap">
+          <canvas id="chart-temp"></canvas>
+        </div>
+      </div>
+
+      <!-- Chart 3: Western Ghats Topographic Elevation Transect -->
+      <div class="chart-card glass">
+        <div class="chart-header">
+          <div class="chart-title">
+            <span>🏔️ Topographic Transect (Cross-Section)</span>
+          </div>
+          <span class="kpi-badge">SRTM 30m High-Res</span>
+        </div>
+        <div class="chart-subtitle">Coastline (Kozhikode) &rarr; Nilgiri Crest (Ooty, 2240m) &rarr; Deccan Plateau</div>
+        <div class="chart-canvas-wrap">
+          <canvas id="chart-transect"></canvas>
+        </div>
+      </div>
+
+      <!-- Chart 4: Multi-Hazard Vulnerability Scatter -->
+      <div class="chart-card glass">
+        <div class="chart-header">
+          <div class="chart-title">
+            <span>📊 Multi-Hazard Vulnerability Matrix</span>
+          </div>
+          <span class="kpi-badge">Slope vs Rainfall vs Risk</span>
+        </div>
+        <div class="chart-subtitle">Station distribution: Steep slope combined with rainfall triggers high risk</div>
+        <div class="chart-canvas-wrap">
+          <canvas id="chart-scatter"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- Automated Early Warning Alerts Feed -->
+    <section class="kpi-card glass" id="automated-alerts-section">
+      <div class="kpi-header">
+        <div>
+          <h3 style="font-size:16px; font-weight:800; display:flex; align-items:center; gap:8px;">
+            <span>🚨 Automated Multi-Hazard Early Warnings (Current Nowcast Horizon)</span>
+          </h3>
+          <p style="font-size:12px; color:var(--text-muted); margin-top:2px;">
+            Dynamic warning generation based on multi-task hazard probability thresholds:
+          </p>
+        </div>
+        <span class="badge-tag" style="background:rgba(239, 68, 68, 0.2); color:#fca5a5; border-color:rgba(239, 68, 68, 0.4);">
+          Threshold-Triggered Engine
+        </span>
+      </div>
+
+      <div class="alerts-feed-grid" id="automated-alerts-container">
+        <!-- Rendered dynamically via app.js based on nowcast horizon -->
+      </div>
+    </section>
+
+    <!-- Interactive "What-If" Extreme Event Simulator -->
+    <section class="simulator-section glass">
+      <div class="section-header">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+          <div>
+            <h2>🧪 Interactive "What-If" Extreme Event Risk Simulator</h2>
+            <p>Adjust climate stress factors to observe dynamic hazard escalation across all stations in real-time.</p>
+          </div>
+          <button id="reset-sim-btn" class="btn">↺ Reset to Baseline</button>
+        </div>
+      </div>
+
+      <div class="simulator-controls">
+        <div class="sim-slider-wrap">
+          <label>
+            <span>Simulate Intense Cloudburst (+Rainfall):</span>
+            <span id="sim-rain-val">+0 mm</span>
+          </label>
+          <input type="range" id="sim-rain" min="0" max="300" step="10" value="0" />
+        </div>
+
+        <div class="sim-slider-wrap">
+          <label>
+            <span>Soil Saturation & Slope Destabilization Factor:</span>
+            <span id="sim-slope-val">1.0x</span>
+          </label>
+          <input type="range" id="sim-slope" min="1.0" max="2.5" step="0.1" value="1.0" />
+        </div>
+
+        <div class="sim-slider-wrap">
+          <label>
+            <span>Thermal Wave Anomaly (+Temperature):</span>
+            <span id="sim-temp-val">+0 °C</span>
+          </label>
+          <input type="range" id="sim-temp" min="-5" max="10" step="1" value="0" />
+        </div>
+      </div>
+
+      <!-- Multi-Hazard Early Warning Assessment Table -->
+      <div class="risk-table-container">
+        <table class="risk-table">
+          <thead>
+            <tr>
+              <th>Monitoring Station</th>
+              <th>Region</th>
+              <th>Elevation (SRTM)</th>
+              <th>Slope</th>
+              <th>24h Rain (GPM)</th>
+              <th>Temp</th>
+              <th>Moisture (IWV)</th>
+              <th>Thunderstorm Head</th>
+              <th>Cloudburst Head</th>
+              <th>Flash Flood Head</th>
+              <th>Composite Risk</th>
+              <th>Alert Level</th>
+              <th>Actionable Advisory</th>
+            </tr>
+          </thead>
+          <tbody id="risk-table-body">
+            <!-- Rendered dynamically -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Multi-Task Spatiotemporal AI Model Architecture & Data Flow Diagram -->
+    <section class="kpi-card glass ai-architecture-section">
+      <div class="kpi-header">
+        <div>
+          <h3 style="font-size:16px; font-weight:800; display:flex; align-items:center; gap:8px;">
+            <span>🔬 Multi-Task Spatiotemporal AI Model Architecture</span>
+          </h3>
+          <p style="font-size:12px; color:var(--text-muted); margin-top:2px;">
+            End-to-end early warning workflow: Multimodal atmospheric inputs &rarr; Shared feature backbone &rarr; 3 Prediction Heads &rarr; Terrain Fusion
+          </p>
+        </div>
+        <span class="badge-tag" style="background:rgba(6, 182, 212, 0.2); color:#67e8f9; border-color:rgba(6, 182, 212, 0.4);">
+          Multi-Task Deep Learning Framework
+        </span>
+      </div>
+
+      <div class="ai-pipeline-grid">
+        <div class="pipeline-step-card">
+          <div class="step-header">Stage 1: Ingestion</div>
+          <div class="step-title">Multimodal Observational Data</div>
+          <div class="step-desc">
+            Continuous ingestion of INSAT-3D/3DR satellite channels, IMDAA atmospheric thermodynamics, GPM precipitation rasters, and SRTM 30m DEM.
+          </div>
+          <div class="step-tags">
+            <span class="step-tag">INSAT-3D WV</span>
+            <span class="step-tag">IMDAA TMP/WIND</span>
+            <span class="step-tag">GPM IMERG</span>
+            <span class="step-tag">SRTM 30m</span>
+          </div>
+        </div>
+
+        <div class="pipeline-step-card">
+          <div class="step-header">Stage 2: Features</div>
+          <div class="step-title">Atmospheric Predictors Backbone</div>
+          <div class="step-desc">
+            Extraction of physical catalysts: Column Moisture (IWV), Thermodynamic Instability (CAPE/CIN), Kinematic Lift (Convergence &amp; Shear), and Satellite Updraft (CTT Drop Rate).
+          </div>
+          <div class="step-tags">
+            <span class="step-tag">IWV &gt; 50mm</span>
+            <span class="step-tag">CAPE &gt; 2500 J/kg</span>
+            <span class="step-tag">CTT Rate -18°C/h</span>
+            <span class="step-tag">Conv &gt; 3.5×10⁻⁵</span>
+          </div>
+        </div>
+
+        <div class="pipeline-step-card">
+          <div class="step-header">Stage 3: Inference</div>
+          <div class="step-title">3 Multi-Task Prediction Heads</div>
+          <div class="step-desc">
+            A shared ConvLSTM/CNN backbone feeds three specialized dense prediction heads outputting calibrated probabilities (0–100%) across the nowcast window.
+          </div>
+          <div class="step-tags">
+            <span class="step-tag" style="color:#fbbf24;">⚡ Thunderstorm Head</span>
+            <span class="step-tag" style="color:#38bdf8;">🌧️ Cloudburst Head</span>
+            <span class="step-tag" style="color:#ef4444;">🌊 Flash Flood Head</span>
+          </div>
+        </div>
+
+        <div class="pipeline-step-card">
+          <div class="step-header">Stage 4: Fusion</div>
+          <div class="step-title">Terrain-Aware Risk Engine</div>
+          <div class="step-desc">
+            Predicted hazard probabilities are fused with SRTM 30m topographic relief, slope steepness, and catchment drainage bottlenecks to evaluate hyper-local vulnerability.
+          </div>
+          <div class="step-tags">
+            <span class="step-tag">SRTM Slope &gt; 35°</span>
+            <span class="step-tag">Basin Bottleneck</span>
+            <span class="step-tag">Composite Risk %</span>
+          </div>
+        </div>
+
+        <div class="pipeline-step-card">
+          <div class="step-header">Stage 5: Delivery</div>
+          <div class="step-title">2–6h Nowcast &amp; Explainable AI</div>
+          <div class="step-desc">
+            Automated generation of tiered warnings (Red Alert / Amber / Watch), actionable civil defense advisories, and transparent Explainable AI physical factor breakdowns.
+          </div>
+          <div class="step-tags">
+            <span class="step-tag">NOW to +6h</span>
+            <span class="step-tag">Explainable AI</span>
+            <span class="step-tag">Automated Alert</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI & Deep Learning Model Benchmark Card -->
+    <section class="kpi-card glass" style="margin-top:4px;">
+      <div class="kpi-header">
+        <div>
+          <h3 style="font-size:15px; font-weight:700;">🤖 AI Weather Prediction Benchmarks (BharathBench Models)</h3>
+          <p style="font-size:12px; color:var(--text-muted);">
+            Pre-trained deep learning forecast models available in the project repository:
+          </p>
+        </div>
+        <span class="badge-tag" style="background:rgba(99, 102, 241, 0.2); color:#818cf8; border-color:rgba(99, 102, 241, 0.4);">
+          30 Pre-trained HDF5 Models
+        </span>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:12px; margin-top:12px;">
+        <div style="background:rgba(0,0,0,0.25); padding:12px; border-radius:8px; border:1px solid var(--border-color);">
+          <div style="font-size:11px; color:var(--accent-cyan); font-weight:700;">BEST TEMPERATURE MODEL</div>
+          <div style="font-size:13px; font-weight:600; margin:2px 0;">IMDAA_CNN_T2m_3days</div>
+          <div style="font-size:11px; color:var(--text-dim);">Validation Loss: <strong style="color:#10b981;">0.0266</strong> &bull; Horizon: 72h Forecast</div>
+        </div>
+
+        <div style="background:rgba(0,0,0,0.25); padding:12px; border-radius:8px; border:1px solid var(--border-color);">
+          <div style="font-size:11px; color:var(--accent-cyan); font-weight:700;">BEST CONVLSTM MODEL</div>
+          <div style="font-size:13px; font-weight:600; margin:2px 0;">IMDAA_convlstm_T2m_3days</div>
+          <div style="font-size:11px; color:var(--text-dim);">Validation Loss: <strong style="color:#10b981;">0.0298</strong> &bull; Horizon: 72h Spatiotemporal</div>
+        </div>
+
+        <div style="background:rgba(0,0,0,0.25); padding:12px; border-radius:8px; border:1px solid var(--border-color);">
+          <div style="font-size:11px; color:var(--accent-cyan); font-weight:700;">GEOPOTENTIAL HEIGHT H500</div>
+          <div style="font-size:13px; font-weight:600; margin:2px 0;">IMDAA_CNN_H500_3days</div>
+          <div style="font-size:11px; color:var(--text-dim);">Validation Loss: <strong style="color:#10b981;">0.1473</strong> &bull; Atmospheric Steering</div>
+        </div>
+
+        <div style="background:rgba(0,0,0,0.25); padding:12px; border-radius:8px; border:1px solid var(--border-color);">
+          <div style="font-size:11px; color:var(--accent-cyan); font-weight:700;">850 hPa TEMPERATURE (T850)</div>
+          <div style="font-size:13px; font-weight:600; margin:2px 0;">IMDAA_CNN_T850_3days</div>
+          <div style="font-size:11px; color:var(--text-dim);">Validation Loss: <strong style="color:#10b981;">0.1202</strong> &bull; Mid-Troposphere Dynamics</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Data Provenance Modal -->
+  <div class="modal-backdrop" id="provenance-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 style="font-size:18px; font-weight:800;">Dataset Provenance & Technical Architecture</h3>
+        <button class="modal-close" id="close-provenance">&times;</button>
+      </div>
+
+      <p style="font-size:13px; color:var(--text-muted);">
+        This prototype is powered by the scientific datasets located inside the current project workspace and integrates multimodal remote sensing:
+      </p>
+
+      <div class="provenance-grid">
+        <div class="provenance-card">
+          <h4>1. SRTM 30m Digital Elevation Model</h4>
+          <p>
+            <strong>Role:</strong> High-Resolution Elevation &amp; Terrain Catalyst<br>
+            <strong>Source:</strong> <code>Data/SRTM_30m_South_India/.../SRTM_30m_South_India.tif</code><br>
+            <strong>Dimensions:</strong> 37,260 &times; 29,686 (1.1 Billion 30-meter elevation cells)<br>
+            <strong>Usage:</strong> Shaded relief terrain layer, slope estimation, elevation query grid, and Western Ghats topographic cross-section transect.
+          </p>
+        </div>
+
+        <div class="provenance-card">
+          <h4>2. NASA GPM IMERG Daily GeoTIFFs</h4>
+          <p>
+            <strong>Role:</strong> Satellite Precipitation Estimation<br>
+            <strong>Source:</strong> <code>Data/GPM/GPM_IMERG_2024_Jan_Day_1..30.tif</code><br>
+            <strong>Dimensions:</strong> 30 daily GeoTIFFs (368 &times; 335 at 0.0898° resolution)<br>
+            <strong>Usage:</strong> 30-day daily precipitation maps, peak event detection (up to 277.8 mm/day), timeline playback scrubber, and rainfall time series.
+          </p>
+        </div>
+
+        <div class="provenance-card">
+          <h4>3. IMDAA Atmospheric Reanalysis</h4>
+          <p>
+            <strong>Role:</strong> Thermodynamic &amp; Kinematic Baseline<br>
+            <strong>Source:</strong> <code>Data/Temperature/IMDAA_TMP_2m...nc</code>, <code>IMDAA_APCP...nc</code>, <code>Data/wind/IMDAA_UGRD/VGRD...nc</code><br>
+            <strong>Dimensions:</strong> 48,926 timesteps &times; 32 &times; 32 grid (1.08° resolution)<br>
+            <strong>Usage:</strong> 2m Air Temp (°C), Surface APCP, 10m U/V Winds, kinematic convergence, and convective instability baselines.
+          </p>
+        </div>
+
+        <div class="provenance-card">
+          <h4>4. INSAT-3D/3DR Satellite Observations</h4>
+          <p>
+            <strong>Role:</strong> Cloud Updraft Signature &amp; Water Vapor Fuel<br>
+            <strong>Channels:</strong> 10.8µm Thermal IR (Cloud Top Temperature - CTT), 6.7µm Water Vapor (Integrated Water Vapor - IWV)<br>
+            <strong>Usage:</strong> Detects explosive convective updrafts via rapid CTT cooling rates (&lt; -15°C/hr) and deep tropospheric moisture fuel.
+          </p>
+        </div>
+
+        <div class="provenance-card">
+          <h4>5. BharathBench AI Deep Learning Models</h4>
+          <p>
+            <strong>Role:</strong> AI Spatiotemporal Weather Benchmarks<br>
+            <strong>Source:</strong> <code>Data/BharathBench/Table4Models/*.hdf5</code><br>
+            <strong>Architectures:</strong> CNN &amp; ConvLSTM neural networks (Val Loss: 0.0266 for T2m, 0.1473 for H500)<br>
+            <strong>Usage:</strong> Scientific foundation for multi-task spatiotemporal forecasting heads.
+          </p>
+        </div>
+      </div>
+
+      <div style="margin-top:20px; display:grid; grid-template-columns:1fr 1fr; gap:12px; font-size:12px;">
+        <div style="padding:12px; background:rgba(16, 185, 129, 0.1); border:1px solid rgba(16, 185, 129, 0.3); border-radius:8px;">
+          <strong style="color:#34d399;">Authenticity Guarantee:</strong> All maps, elevation readings, rainfall charts, and climate baselines are processed directly from the raw TIFF and NetCDF files without altering original datasets.
+        </div>
+        <div style="padding:12px; background:rgba(99, 102, 241, 0.1); border:1px solid rgba(99, 102, 241, 0.3); border-radius:8px;">
+          <strong style="color:#a5b4fc;">Nowcasting Disclaimer:</strong> 2–6 hour future nowcasting states represent a prototype inference engine calibrated on physical predictors for hackathon demonstration.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>Smart India Hackathon (SIH) Prototype &bull; Multi-Hazard Early Warning &amp; Climate Intelligence System</p>
+    <p style="margin-top:4px;">Built with Leaflet &bull; Chart.js &bull; Python Data Engine &bull; SRTM 30m &bull; NASA GPM IMERG &bull; NCMRWF IMDAA</p>
+  </footer>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <!-- Application Logic -->
+  <script src="js/app.js"></script>
+</body>
+</html>
